@@ -82,9 +82,8 @@ class Student
     sql = <<-SQL
     SELECT * FROM students WHERE grade = 10 LIMIT 1
     SQL
-    
-    return_student = DB[:conn].execute(sql).flatten
-    first_student = self.new_from_db(return_student)
+    returned_student_array = DB[:conn].execute(sql).flatten
+    first_student = self.new_from_db(returned_student_array)
     first_student
   end
   end
