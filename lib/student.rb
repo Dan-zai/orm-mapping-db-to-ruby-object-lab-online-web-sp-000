@@ -6,6 +6,7 @@ class Student
     student.id = row[0]
     student.name = row[1]
     student.grade = row[2]
+    student
   end
 
   def self.all
@@ -21,7 +22,6 @@ class Student
     sql = <<-SQL
     SELECT * FROM students WHERE name = ? LIMIT 1; 
     SQL
-
     DB[:conn].execute(sql, name).map do |row| 
     self.new_from_db(row)
     end.first  
