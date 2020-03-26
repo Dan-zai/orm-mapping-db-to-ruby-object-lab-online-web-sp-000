@@ -77,6 +77,7 @@ class Student
     DB[:conn].execute(sql, number).map do |row|
     self.new_from_db(row)
   end
+  end
   
   def self.first_student_in_grade_10
     sql = <<-SQL
@@ -85,7 +86,6 @@ class Student
     returned_student_array = DB[:conn].execute(sql).flatten
     first_student = self.new_from_db(returned_student_array)
     first_student
-  end
   end
   
   def self.all_students_in_grade_X(grade)
